@@ -216,7 +216,7 @@ requires-dist = [
     { name = "django-axes", specifier = ">=8,<9" },
     { name = "django-ninja", specifier = ">=1.4,<2" },
     { name = "gunicorn", specifier = ">=23,<24" },
-    { name = "psycopg", extras = ["binary"], specifier = ">=3.2,<4" },
+    { name = "psycopg", extras = ["binary"], specifier = ">=3.3.9,<4" },
 ]
 
 [package.metadata.requires-dev]

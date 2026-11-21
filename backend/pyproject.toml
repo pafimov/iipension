@@ -6,7 +6,7 @@ dependencies = [
   "Django>=5.2.8,<5.3",
   "django-ninja>=1.4,<2",
   "django-axes>=8,<9",
-  "psycopg[binary]>=3.2,<4",
+  "psycopg[binary]>=3.3.9,<4",
   "gunicorn>=23,<24",
 ]
 [dependency-groups]
