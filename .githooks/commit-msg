@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+if [ "$(head -n 1 "$1")" = init ] && ! git rev-parse --verify --quiet HEAD >/dev/null; then
+  exit 0
+fi
+if ! head -n 1 "$1" | grep -Eq '^(feat|fix|docs|test|refactor|chore|ci|build|perf|revert)(\([a-z0-9/-]+\))?!?: .{3,}$'; then
+  echo "Use Conventional Commits: feat(goals): persist confirmed inputs" >&2
+  exit 1
+fi

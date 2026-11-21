@@ -1,0 +1,448 @@
+:root {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  color: #191919;
+  background: #fff;
+  font-synthesis: none;
+  line-height: 1.5;
+  --accent: #ffdd2d;
+  --accent-hover: #f4ca18;
+  --ink: #191919;
+  --muted: #55534f;
+  --surface: #f6f6f4;
+  --border: #e3e2de;
+  --control-border: #87857f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  min-height: 2.75rem;
+  background: var(--accent);
+  color: var(--ink);
+  padding: 0.65rem 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 0.65rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+button.secondary {
+  background: #fff;
+  border-color: var(--control-border);
+}
+
+button.secondary:hover:not(:disabled) {
+  background: var(--surface);
+}
+
+:focus-visible,
+.plan-heading h3:focus {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.shell {
+  width: min(calc(100% - 3rem), 68rem);
+  margin-inline: auto;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner,
+.brand,
+.account {
+  display: flex;
+  align-items: center;
+}
+
+.header-inner {
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  min-height: 4.5rem;
+  padding-block: 0.75rem;
+}
+
+.brand {
+  gap: 0.65rem;
+  font-size: 1.05rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  border-radius: 0.6rem;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  background: var(--accent);
+}
+
+.account {
+  gap: 0.75rem;
+  max-width: 100%;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.account span {
+  overflow-wrap: anywhere;
+}
+
+.overview {
+  padding-block: clamp(2rem, 5vw, 4rem) 2rem;
+}
+
+.welcome,
+.workspace {
+  display: grid;
+  align-items: start;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.welcome {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+  align-items: center;
+  padding-block: clamp(2rem, 7vw, 6rem) 2rem;
+}
+
+.intro h1 {
+  font-size: clamp(2rem, 5.3vw, 4rem);
+  line-height: 1.2;
+  letter-spacing: -0.055em;
+  margin: 0;
+  font-weight: 780;
+}
+
+.intro mark {
+  color: inherit;
+  background: var(--accent);
+  border-radius: 0.13em;
+  padding-inline: 0.14em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.welcome .intro mark {
+  display: table;
+  margin-top: 0.1em;
+}
+
+.intro p {
+  max-width: 37rem;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  margin: 1rem 0 0;
+}
+
+.workspace {
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+}
+
+.card {
+  background: #fff;
+  padding: clamp(1.1rem, 3vw, 2rem);
+  border: 1px solid var(--border);
+  border-radius: 1.3rem;
+  min-width: 0;
+  box-shadow: 0 0.55rem 1.75rem rgb(25 25 25 / 5%);
+}
+
+.saved {
+  background: var(--surface);
+  box-shadow: none;
+}
+
+h2 {
+  font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.saved > .hint {
+  margin-top: 0.75rem;
+}
+
+form {
+  display: grid;
+  gap: 1.35rem;
+  margin-top: 1.3rem;
+}
+
+.login button {
+  width: 100%;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field,
+label {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+label {
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 2.875rem;
+  border: 1px solid var(--control-border);
+  border-radius: 0.55rem;
+  padding: 0.65rem 0.75rem;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+textarea {
+  min-height: 5.25rem;
+  resize: vertical;
+}
+
+.income-field {
+  padding: clamp(0.85rem, 2vw, 1.25rem);
+  background: #fff8db;
+  border-radius: 0.8rem;
+}
+
+.income-field label {
+  font-size: 1.1rem;
+  line-height: 1.35;
+  margin-bottom: 0.25rem;
+}
+
+.income-input {
+  position: relative;
+  margin-top: 0.75rem;
+}
+
+.income-input input {
+  font-size: clamp(1.35rem, 4vw, 1.9rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  padding-inline-end: 2.6rem;
+}
+
+.income-input span {
+  position: absolute;
+  inset-inline-end: 0.9rem;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-weight: 650;
+  pointer-events: none;
+}
+
+fieldset {
+  border: 0;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  font-weight: 730;
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  padding: 0;
+}
+
+fieldset > .hint {
+  margin-bottom: 0.7rem;
+}
+
+.risk-field {
+  margin-top: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.feedback {
+  border-left: 3px solid #b22f35;
+  padding: 0.6rem 1rem;
+  margin: 0;
+  background: #fff0f0;
+  color: #85292b;
+  overflow-wrap: anywhere;
+}
+
+main > .feedback,
+.saved > .feedback {
+  margin-block: 0.75rem;
+}
+
+.plans {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.plans li {
+  padding-block: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.plans li:last-child {
+  padding-bottom: 0;
+}
+
+.plan-heading h3 {
+  width: fit-content;
+  margin: 0.2rem 0 0;
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.plan-heading small {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: normal;
+}
+
+.plan-status,
+dt {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.plan-status {
+  margin: 0;
+  font-weight: 650;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0 0;
+}
+
+dd {
+  margin: 0.1rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.plan-risk {
+  grid-column: 1 / -1;
+}
+
+.plans button,
+.more-plans {
+  margin-top: 1rem;
+}
+
+.availability {
+  margin-block: 2rem 0;
+  padding-block: 1rem 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.skip {
+  position: absolute;
+  left: -10000px;
+}
+
+.skip:focus {
+  left: 1rem;
+  top: 1rem;
+  padding: 1rem;
+  z-index: 1;
+  background: #fff;
+}
+
+@media (max-width: 790px) {
+  .welcome,
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .login {
+    width: min(100%, 30rem);
+  }
+}
+
+@media (max-width: 520px) {
+  .shell {
+    width: calc(100% - 2rem);
+  }
+
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+  .account {
+    gap: 0.5rem;
+  }
+
+  .account button {
+    padding-inline: 0.75rem;
+  }
+}

@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+python3 scripts/check_portability.py
+git diff --cached --check
+python3 - <<'PY'
+from pathlib import PurePosixPath
+import subprocess
+names = subprocess.check_output(['git', 'diff', '--cached', '--name-only', '-z']).decode().split('\0')
+for name in filter(None, names):
+    path = PurePosixPath(name)
+    if (path.name.startswith('.env') and path.name != '.env.example') or path.suffix in {'.pem', '.key'}:
+        raise SystemExit('Refusing environment secrets or private key files: ' + name)
+PY

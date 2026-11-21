@@ -1,0 +1,317 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Personal Pension API",
+    "version": "0.1.0",
+    "description": ""
+  },
+  "paths": {
+    "/api/v1/goals": {
+      "get": {
+        "operationId": "listGoals",
+        "summary": "List Goals",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "default": 0,
+              "maximum": 100000,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoalPage"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "SessionAuth": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "createGoal",
+        "summary": "Create Goal",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoalOutput"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GoalInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/goals/{goal_id}/confirm": {
+      "post": {
+        "operationId": "confirmGoal",
+        "summary": "Confirm Goal",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "goal_id",
+            "schema": {
+              "format": "uuid",
+              "title": "Goal Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoalOutput"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Confirmation"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GoalOutput": {
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "monthly_income": {
+            "title": "Monthly Income",
+            "type": "string"
+          },
+          "money_basis": {
+            "title": "Money Basis",
+            "type": "string"
+          },
+          "payout_start": {
+            "format": "date",
+            "title": "Payout Start",
+            "type": "string"
+          },
+          "payout_months": {
+            "title": "Payout Months",
+            "type": "integer"
+          },
+          "initial_capital": {
+            "title": "Initial Capital",
+            "type": "string"
+          },
+          "monthly_contribution": {
+            "title": "Monthly Contribution",
+            "type": "string"
+          },
+          "risk_notes": {
+            "title": "Risk Notes",
+            "type": "string"
+          },
+          "confirmed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confirmed At"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "monthly_income",
+          "money_basis",
+          "payout_start",
+          "payout_months",
+          "initial_capital",
+          "monthly_contribution",
+          "risk_notes",
+          "confirmed_at",
+          "created_at"
+        ],
+        "title": "GoalOutput",
+        "type": "object"
+      },
+      "GoalPage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/GoalOutput"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "has_more": {
+            "title": "Has More",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "items",
+          "has_more"
+        ],
+        "title": "GoalPage",
+        "type": "object"
+      },
+      "GoalInput": {
+        "additionalProperties": false,
+        "properties": {
+          "monthly_income": {
+            "title": "Monthly Income",
+            "type": "string"
+          },
+          "money_basis": {
+            "enum": [
+              "today",
+              "future"
+            ],
+            "title": "Money Basis",
+            "type": "string"
+          },
+          "payout_start": {
+            "format": "date",
+            "title": "Payout Start",
+            "type": "string"
+          },
+          "payout_months": {
+            "maximum": 1200,
+            "minimum": 1,
+            "title": "Payout Months",
+            "type": "integer"
+          },
+          "initial_capital": {
+            "title": "Initial Capital",
+            "type": "string"
+          },
+          "monthly_contribution": {
+            "title": "Monthly Contribution",
+            "type": "string"
+          },
+          "risk_notes": {
+            "maxLength": 1000,
+            "minLength": 1,
+            "title": "Risk Notes",
+            "type": "string"
+          }
+        },
+        "required": [
+          "monthly_income",
+          "money_basis",
+          "payout_start",
+          "payout_months",
+          "initial_capital",
+          "monthly_contribution",
+          "risk_notes"
+        ],
+        "title": "GoalInput",
+        "type": "object"
+      },
+      "Error": {
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "title": "Error",
+        "type": "object"
+      },
+      "Confirmation": {
+        "additionalProperties": false,
+        "properties": {
+          "confirmed": {
+            "const": true,
+            "title": "Confirmed",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "confirmed"
+        ],
+        "title": "Confirmation",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "SessionAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "sessionid"
+      }
+    }
+  },
+  "servers": []
+}

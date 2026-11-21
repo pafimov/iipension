@@ -1,0 +1,14 @@
+# Optional build-only trust bundle. No certificate is copied into a runtime image.
+services:
+  api:
+    build:
+      secrets: [build_ca]
+  migrate:
+    build:
+      secrets: [build_ca]
+  web:
+    build:
+      secrets: [build_ca]
+secrets:
+  build_ca:
+    file: ${BUILD_CA_FILE:?Set an absolute path to a trusted CA bundle outside this repository}

@@ -1,0 +1,32 @@
+[project]
+name = "pension-api"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "Django>=5.2.8,<5.3",
+  "django-ninja>=1.4,<2",
+  "django-axes>=8,<9",
+  "psycopg[binary]>=3.2,<4",
+  "gunicorn>=23,<24",
+]
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-django>=4.9,<5", "pytest-cov>=6,<8", "ruff>=0.12,<1", "mypy>=1.15,<2"]
+[tool.uv]
+package = false
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.test_settings"
+testpaths = ["tests"]
+addopts = "--strict-markers"
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S"]
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "S106"]
+"config/test_settings.py" = ["F403", "F405", "S105"]
+"pension/migrations/*" = ["E501"]
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["pension/domain"]

@@ -1,0 +1,28 @@
+[
+  {
+    "source": "new2.1_PRD.docx",
+    "sha256": "f6390b3ecd4ac22865d6915593c854b71a817d13249b54d8f158344a98090ed6",
+    "normalized": "PRD.md"
+  },
+  {
+    "source": "new2.2_SRS.docx",
+    "sha256": "0db82d1c7e1380e7eae82f4e93befb648055c1877c616f39dcf4ab24232fdb93",
+    "normalized": "SRS.md"
+  },
+  {
+    "source": "new2.3_UserStories.docx",
+    "sha256": "3ec136605c9444b24fa0383f82f1886273265e5677f0076d30a6c0bc23c848bf",
+    "normalized": "UserStories.md"
+  },
+  {
+    "source": "new2.4_RTM.docx",
+    "sha256": "c415017d83b9b8776f9f36c37af64059dad8ec2dd0d4d028b9f672b771a4bde6",
+    "normalized": "RTM.md"
+  },
+  {
+    "source": "newРоадмап.xlsx",
+    "sha256": "51c1f6f97d3d68fb5628df881cf6da89b7093b73b9b54a8fcfc7fd373c6cd8af",
+    "normalized": "roadmap.csv",
+    "notes": "Only task fields A:G; Gantt formulas omitted; source statuses unchanged"
+  }
+]
