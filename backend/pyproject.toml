@@ -7,7 +7,7 @@ dependencies = [
   "django-ninja>=1.4,<2",
   "django-axes>=8,<9",
   "psycopg[binary]>=3.2,<4",
-  "gunicorn>=23,<24",
+  "gunicorn>=27.0.1,<28",
 ]
 [dependency-groups]
 dev = ["pytest>=8,<10", "pytest-django>=4.9,<5", "pytest-cov>=6,<8", "ruff>=0.12,<1", "mypy>=1.15,<2"]
